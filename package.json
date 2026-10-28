@@ -1,0 +1,129 @@
+{
+  "name": "compile-all",
+  "version": "1.0.0",
+  "description": "Universal zero-dependency online code compiler, interactive code playground & sandboxed execution engine for React, Vue, Angular, React Native, and Vanilla JS. Supports 45+ languages with client-side WebAssembly and remote execution adapters.",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.esm.js",
+      "require": "./dist/react/index.js",
+      "default": "./dist/react/index.esm.js"
+    },
+    "./vue": {
+      "types": "./dist/vue/index.d.ts",
+      "import": "./dist/vue/index.esm.js",
+      "require": "./dist/vue/index.js",
+      "default": "./dist/vue/index.esm.js"
+    },
+    "./angular": {
+      "types": "./dist/angular/index.d.ts",
+      "import": "./dist/angular/index.esm.js",
+      "require": "./dist/angular/index.js",
+      "default": "./dist/angular/index.esm.js"
+    },
+    "./react-native": {
+      "types": "./dist/react-native/index.d.ts",
+      "import": "./dist/react-native/index.esm.js",
+      "require": "./dist/react-native/index.js",
+      "default": "./dist/react-native/index.esm.js"
+    },
+    "./css": "./dist/compile-all.css",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "react": [
+        "dist/react/index.d.ts",
+        "src/react/index.d.ts"
+      ],
+      "vue": [
+        "dist/vue/index.d.ts",
+        "src/vue/index.d.ts"
+      ],
+      "angular": [
+        "dist/angular/index.d.ts",
+        "src/angular/index.d.ts"
+      ],
+      "react-native": [
+        "dist/react-native/index.d.ts",
+        "src/react-native/index.d.ts"
+      ],
+      "types": [
+        "dist/types/index.d.ts",
+        "src/types/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "rollup -c && node scripts/copyTypes.mjs",
+    "dev": "rollup -c -w",
+    "test": "node tests/engines.test.js",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "keywords": [
+    "compile-all",
+    "online-compiler",
+    "code-runner",
+    "code-executor",
+    "compiler",
+    "interactive-playground",
+    "ide",
+    "code-editor",
+    "syntax-highlighter",
+    "zero-dependency",
+    "piston",
+    "judge0",
+    "python",
+    "javascript",
+    "typescript",
+    "cpp",
+    "c",
+    "java",
+    "rust",
+    "golang",
+    "react",
+    "vue",
+    "angular",
+    "react-native"
+  ],
+  "author": "Veeresh <veeresha.dev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VeereshMaps/compile-all.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VeereshMaps/compile-all/issues"
+  },
+  "homepage": "https://github.com/VeereshMaps/compile-all#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.9.6",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,1151 @@
+/**
+ * compile-all - Scoped CSS Design System
+ * Prefix: .cpa-
+ * Zero external CSS dependencies
+ * 100% Width & Height Responsive with Multi-Layout & Template Support
+ */
+
+:root,
+[data-theme='dark'] {
+  --cpa-bg: #0d1117;
+  --cpa-surface: #161b22;
+  --cpa-surface-alt: #21262d;
+  --cpa-border: #30363d;
+  --cpa-text: #f0f6fc;
+  --cpa-text-muted: #8b949e;
+  --cpa-primary: #238636;
+  --cpa-primary-hover: #2ea043;
+  --cpa-danger: #da3633;
+  --cpa-danger-hover: #f85149;
+  --cpa-warning: #d29922;
+  --cpa-info: #58a6ff;
+  --cpa-terminal-bg: #090d13;
+  --cpa-terminal-text: #5af78e;
+  --cpa-terminal-err: #ff5c57;
+  --cpa-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --cpa-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --cpa-radius: 8px;
+  --cpa-radius-sm: 4px;
+  --cpa-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] {
+  --cpa-bg: #f6f8fa;
+  --cpa-surface: #ffffff;
+  --cpa-surface-alt: #eaeef2;
+  --cpa-border: #d0d7de;
+  --cpa-text: #1f2328;
+  --cpa-text-muted: #656d76;
+  --cpa-primary: #1f883d;
+  --cpa-primary-hover: #1a7f37;
+  --cpa-danger: #cf222e;
+  --cpa-danger-hover: #a40e26;
+  --cpa-warning: #9a6700;
+  --cpa-info: #0969da;
+  --cpa-terminal-bg: #1e1e1e;
+  --cpa-terminal-text: #4ec9b0;
+  --cpa-terminal-err: #f14c4c;
+  --cpa-shadow: 0 4px 16px rgba(140, 149, 159, 0.15);
+}
+
+/* Master Root Container: 100% Width & 100% Height Responsive */
+.cpa-container {
+  box-sizing: border-box;
+  font-family: var(--cpa-font-sans);
+  background: var(--cpa-bg);
+  color: var(--cpa-text);
+  border: 1px solid var(--cpa-border);
+  border-radius: var(--cpa-radius);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--cpa-shadow);
+}
+
+.cpa-container * {
+  box-sizing: border-box;
+}
+
+/* Fullscreen Mode */
+.cpa-container.cpa-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* Header Toolbar */
+.cpa-toolbar {
+  height: 44px;
+  background: var(--cpa-surface);
+  border-bottom: 1px solid var(--cpa-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  flex-shrink: 0;
+  gap: 8px;
+  user-select: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cpa-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 3-Zone Toolbar Organization */
+.cpa-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.cpa-toolbar-center {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.cpa-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Brand Identity */
+.cpa-brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--cpa-text);
+  padding: 0 6px 0 2px;
+  letter-spacing: -0.01em;
+}
+
+.cpa-brand-icon {
+  font-size: 14px;
+  color: #38bdf8;
+}
+
+.cpa-brand-text {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Keyboard Shortcut Badge */
+.cpa-kbd {
+  display: inline-block;
+  padding: 1px 4px;
+  font-size: 9.5px;
+  font-family: var(--cpa-font-mono);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  margin-left: 3px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Toolbar Buttons */
+.cpa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: var(--cpa-radius-sm);
+  cursor: pointer;
+  border: 1px solid var(--cpa-border);
+  background: var(--cpa-surface-alt);
+  color: var(--cpa-text);
+  transition: all 0.15s ease;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cpa-btn:hover {
+  background: var(--cpa-border);
+}
+
+.cpa-btn:active {
+  transform: scale(0.97);
+}
+
+.cpa-btn.active {
+  background: var(--cpa-info);
+  border-color: var(--cpa-info);
+  color: #ffffff;
+}
+
+.cpa-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cpa-btn-run {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+  font-weight: 700;
+}
+
+.cpa-btn-run:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: #047857;
+}
+
+.cpa-btn-stop {
+  background: var(--cpa-danger);
+  border-color: var(--cpa-danger);
+  color: #ffffff;
+}
+
+.cpa-btn-stop:hover {
+  background: var(--cpa-danger-hover);
+  border-color: var(--cpa-danger-hover);
+}
+
+/* Dropdown Selectors */
+.cpa-select {
+  height: 30px;
+  padding: 0 8px;
+  background: var(--cpa-surface-alt);
+  border: 1px solid var(--cpa-border);
+  color: var(--cpa-text);
+  border-radius: var(--cpa-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  max-width: 160px;
+}
+
+.cpa-select:focus {
+  border-color: var(--cpa-info);
+}
+
+/* Segmented Layout Switcher */
+.cpa-layout-group {
+  display: inline-flex;
+  background: var(--cpa-surface-alt);
+  border: 1px solid var(--cpa-border);
+  border-radius: var(--cpa-radius-sm);
+  padding: 2px;
+  gap: 2px;
+}
+
+.cpa-btn-layout {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--cpa-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.cpa-btn-layout:hover {
+  color: var(--cpa-text);
+  background: var(--cpa-surface);
+}
+
+.cpa-btn-layout.active {
+  background: var(--cpa-info);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Toolbar Divider */
+.cpa-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--cpa-border);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+/* Master Workspace */
+.cpa-workspace {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--cpa-bg);
+  position: relative;
+}
+
+/* ========================================
+   RESIZABLE DRAGGABLE SPLITTER GUTTER
+   ======================================== */
+.cpa-gutter {
+  background: var(--cpa-border);
+  position: relative;
+  z-index: 10;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* Split Horizontal (Col resize) */
+.cpa-workspace.cpa-layout-split-h > .cpa-gutter {
+  width: 6px;
+  cursor: col-resize;
+  height: 100%;
+}
+
+/* Split Vertical (Row resize) */
+.cpa-workspace.cpa-layout-split-v > .cpa-gutter {
+  height: 6px;
+  cursor: row-resize;
+  width: 100%;
+}
+
+/* Hide gutter in single-pane layouts */
+.cpa-workspace.cpa-layout-editor-only > .cpa-gutter,
+.cpa-workspace.cpa-layout-terminal-only > .cpa-gutter {
+  display: none !important;
+}
+
+/* Gutter Hover & Dragging Active States */
+.cpa-gutter:hover,
+.cpa-gutter.cpa-gutter-active {
+  background: var(--cpa-info) !important;
+}
+
+/* Center visual grab handle indicator */
+.cpa-gutter-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.cpa-workspace.cpa-layout-split-h .cpa-gutter-handle {
+  width: 2px;
+  height: 24px;
+}
+
+.cpa-workspace.cpa-layout-split-v .cpa-gutter-handle {
+  width: 24px;
+  height: 2px;
+}
+
+/* ========================================
+   MULTIPLE LAYOUT MODES
+   ======================================== */
+
+/* Layout 1: Split Horizontal (Side-by-Side: Editor Left, Terminal Right) */
+.cpa-workspace.cpa-layout-split-h {
+  flex-direction: row;
+}
+.cpa-workspace.cpa-layout-split-h .cpa-editor-pane {
+  flex: 1;
+  border-right: none;
+  border-bottom: none;
+}
+.cpa-workspace.cpa-layout-split-h .cpa-terminal-pane {
+  flex: 1;
+}
+
+/* Layout 2: Split Vertical (Stacked: Editor Top, Terminal Bottom) */
+.cpa-workspace.cpa-layout-split-v {
+  flex-direction: column;
+}
+.cpa-workspace.cpa-layout-split-v .cpa-editor-pane {
+  flex: 1.2;
+  border-right: none;
+  border-bottom: none;
+}
+.cpa-workspace.cpa-layout-split-v .cpa-terminal-pane {
+  flex: 1;
+}
+
+/* Layout 3: Editor Only (Focus Mode) */
+.cpa-workspace.cpa-layout-editor-only .cpa-editor-pane {
+  flex: 1 !important;
+  width: 100% !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+.cpa-workspace.cpa-layout-editor-only .cpa-terminal-pane {
+  display: none !important;
+}
+
+/* Layout 4: Terminal Only (Console Mode) */
+.cpa-workspace.cpa-layout-terminal-only .cpa-terminal-pane {
+  flex: 1 !important;
+  width: 100% !important;
+}
+.cpa-workspace.cpa-layout-terminal-only .cpa-editor-pane {
+  display: none !important;
+}
+
+/* Responsive Auto-Fallback on Mobile screens */
+@media (max-width: 768px) {
+  .cpa-workspace.cpa-layout-split-h {
+    flex-direction: column;
+  }
+  .cpa-workspace.cpa-layout-split-h .cpa-editor-pane {
+    border-right: none;
+    border-bottom: 1px solid var(--cpa-border);
+    flex: 1.2;
+  }
+}
+
+/* Editor Pane */
+.cpa-editor-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--cpa-surface);
+  position: relative;
+}
+
+.cpa-editor-header {
+  height: 36px;
+  background: var(--cpa-surface-alt);
+  border-bottom: 1px solid var(--cpa-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cpa-text-muted);
+  flex-shrink: 0;
+  user-select: none;
+  overflow: hidden;
+}
+
+.cpa-editor-actions,
+.cpa-terminal-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* Pane Control Buttons (Minimize, Maximize, Copy, Download, Clear) */
+.cpa-btn-pane-ctrl {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--cpa-text-muted);
+  cursor: pointer;
+  width: 26px;
+  height: 24px;
+  padding: 0;
+  border-radius: var(--cpa-radius-sm);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.cpa-btn-pane-ctrl:hover {
+  background: var(--cpa-border);
+  color: var(--cpa-text);
+  border-color: var(--cpa-border);
+}
+
+.cpa-btn-pane-ctrl:active {
+  transform: scale(0.92);
+}
+
+.cpa-divider-v {
+  width: 1px;
+  height: 14px;
+  background: var(--cpa-border);
+  margin: 0 3px;
+  flex-shrink: 0;
+}
+
+/* Docked Section Restore Strips */
+.cpa-restore-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  background: var(--cpa-surface-alt);
+  border-bottom: 1px dashed var(--cpa-border);
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.cpa-editor-pane > .cpa-restore-strip {
+  border-bottom: none;
+  border-top: 1px dashed var(--cpa-border);
+}
+
+.cpa-restore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cpa-surface);
+  border: 1px solid var(--cpa-info);
+  color: var(--cpa-info);
+  border-radius: var(--cpa-radius-sm);
+  padding: 4px 14px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.cpa-restore-btn:hover {
+  background: var(--cpa-info);
+  color: #ffffff;
+}
+
+.cpa-btn-toolbar-restore {
+  background: rgba(88, 166, 255, 0.12) !important;
+  border: 1px solid var(--cpa-info) !important;
+  color: var(--cpa-info) !important;
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px !important;
+  border-radius: var(--cpa-radius-sm);
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cpa-btn-toolbar-restore:hover {
+  background: var(--cpa-info) !important;
+  color: #ffffff !important;
+}
+
+.cpa-btn-icon-symbol {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.cpa-char-count {
+  font-size: 11px;
+  font-family: var(--cpa-font-mono);
+  color: var(--cpa-text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+#cpa-editor-filename {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cpa-text);
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+.cpa-btn-icon {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--cpa-text-muted);
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: var(--cpa-radius-sm);
+  font-size: 12.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.cpa-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--cpa-border);
+  color: var(--cpa-text);
+}
+
+/* Editor Input & Syntax Highlighting Canvas */
+.cpa-editor-body {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: auto;
+  font-family: var(--cpa-font-mono);
+  font-size: 13.5px;
+  line-height: 20px;
+  tab-size: 2;
+  min-height: 0;
+}
+
+.cpa-line-numbers {
+  padding: 12px 10px 12px 14px;
+  text-align: right;
+  color: var(--cpa-text-muted);
+  user-select: none;
+  border-right: 1px solid var(--cpa-border);
+  background: var(--cpa-surface-alt);
+  font-family: var(--cpa-font-mono);
+  min-width: 44px;
+  flex-shrink: 0;
+}
+
+.cpa-line-num {
+  line-height: 20px;
+}
+
+.cpa-code-wrapper {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.cpa-code-input,
+.cpa-code-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 12px 16px;
+  margin: 0;
+  border: none;
+  font-family: var(--cpa-font-mono);
+  font-size: 13.5px;
+  line-height: 20px;
+  white-space: pre;
+  tab-size: 2;
+  word-wrap: normal;
+  overflow: auto;
+}
+
+.cpa-code-input {
+  color: transparent;
+  background: transparent;
+  caret-color: var(--cpa-text);
+  resize: none;
+  outline: none;
+  z-index: 2;
+}
+
+.cpa-code-highlight {
+  color: var(--cpa-text);
+  background: transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Syntax Highlighting Tokens */
+.cpa-tok-keyword { color: #ff7b72; font-weight: bold; }
+.cpa-tok-string { color: #a5d6ff; }
+.cpa-tok-number { color: #79c0ff; }
+.cpa-tok-comment { color: #8b949e; font-style: italic; }
+.cpa-tok-function { color: #d2a8ff; font-weight: 600; }
+.cpa-tok-type { color: #ffa657; }
+.cpa-tok-operator { color: #ff7b72; }
+
+/* Stdin Drawer (Collapsible) */
+.cpa-stdin-drawer {
+  background: var(--cpa-surface-alt);
+  border-top: 1px solid var(--cpa-border);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.cpa-stdin-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cpa-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.cpa-stdin-input {
+  width: 100%;
+  height: 60px;
+  background: var(--cpa-bg);
+  border: 1px solid var(--cpa-border);
+  color: var(--cpa-text);
+  border-radius: var(--cpa-radius-sm);
+  padding: 8px;
+  font-family: var(--cpa-font-mono);
+  font-size: 12.5px;
+  resize: vertical;
+  outline: none;
+}
+
+.cpa-stdin-input:focus {
+  border-color: var(--cpa-info);
+}
+
+/* Terminal Console Pane */
+.cpa-terminal-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--cpa-terminal-bg);
+  color: var(--cpa-terminal-text);
+  font-family: var(--cpa-font-mono);
+}
+
+.cpa-terminal-header {
+  height: 36px;
+  background: var(--cpa-surface-alt);
+  border-bottom: 1px solid var(--cpa-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cpa-text-muted);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.cpa-terminal-header.cpa-tabs-right {
+  padding: 0 8px 0 10px;
+}
+
+.cpa-terminal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-family: var(--cpa-font-mono);
+  color: var(--cpa-text-muted);
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--cpa-radius-sm);
+  white-space: nowrap;
+}
+
+/* Console vs Live Web Preview Tabs docked cleanly on the Left (Matching Editor Tabs) */
+.cpa-terminal-tabs {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.cpa-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--cpa-font-mono);
+  color: var(--cpa-text-muted);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--cpa-border);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1;
+}
+
+.cpa-tab-btn:hover {
+  color: var(--cpa-text);
+  background: var(--cpa-surface);
+}
+
+.cpa-tab-btn.active {
+  color: var(--cpa-text);
+  background: var(--cpa-surface);
+  border-bottom: 2px solid var(--cpa-info);
+  font-weight: 600;
+}
+
+/* When tabs are positioned on the Right */
+.cpa-terminal-header.cpa-tabs-right .cpa-terminal-tabs {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--cpa-border);
+  border-radius: var(--cpa-radius-sm);
+  padding: 2px;
+  gap: 2px;
+}
+
+.cpa-terminal-header.cpa-tabs-right .cpa-tab-btn {
+  height: auto;
+  padding: 3px 8px;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.cpa-terminal-header.cpa-tabs-right .cpa-tab-btn.active {
+  background: var(--cpa-info);
+  color: #ffffff;
+  border-bottom: none;
+}
+
+/* Live Web Preview Frame */
+.cpa-preview-frame {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #0f172a;
+  min-height: 0;
+}
+
+.cpa-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6c757d;
+}
+
+.cpa-status-dot.cpa-running {
+  background: var(--cpa-warning);
+  box-shadow: 0 0 8px var(--cpa-warning);
+  animation: cpa-pulse 1s infinite alternate;
+}
+
+.cpa-status-dot.cpa-success {
+  background: var(--cpa-primary);
+}
+
+.cpa-status-dot.cpa-error {
+  background: var(--cpa-danger);
+}
+
+@keyframes cpa-pulse {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* Terminal Console Body */
+.cpa-terminal-body {
+  flex: 1;
+  overflow: auto;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  user-select: text;
+  min-height: 0;
+}
+
+.cpa-term-stdout {
+  color: var(--cpa-terminal-text);
+}
+
+.cpa-term-stderr {
+  color: var(--cpa-terminal-err);
+}
+
+.cpa-term-info {
+  color: #8b949e;
+  font-style: italic;
+}
+
+/* Telemetry Footer Bar */
+.cpa-telemetry-bar {
+  height: 28px;
+  background: var(--cpa-surface);
+  border-top: 1px solid var(--cpa-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 11.5px;
+  color: var(--cpa-text-muted);
+  font-family: var(--cpa-font-mono);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.cpa-telemetry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   STACKBLITZ-STYLE FILE EXPLORER SIDEBAR
+   ======================================== */
+.cpa-file-sidebar {
+  width: 210px;
+  min-width: 160px;
+  max-width: 280px;
+  background: var(--cpa-surface);
+  border-right: 1px solid var(--cpa-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+  font-size: 13px;
+  user-select: none;
+  z-index: 5;
+}
+
+.cpa-file-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cpa-text-muted);
+  border-bottom: 1px solid var(--cpa-border);
+  background: var(--cpa-surface-alt);
+}
+
+.cpa-file-sidebar-actions {
+  display: flex;
+  gap: 4px;
+}
+
+/* Inline New File Creation Box (Downside of the New File Icon) */
+.cpa-new-file-box {
+  background: var(--cpa-surface-alt);
+  border-bottom: 1px solid var(--cpa-border);
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cpa-new-file-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cpa-bg);
+  border: 1px solid var(--cpa-info);
+  border-radius: var(--cpa-radius-sm);
+  padding: 3px 6px;
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);
+}
+
+.cpa-new-file-icon {
+  font-size: 12px;
+  user-select: none;
+  opacity: 0.85;
+}
+
+.cpa-new-file-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cpa-text);
+  font-family: var(--cpa-font-mono);
+  font-size: 11.5px;
+  padding: 2px 0;
+  min-width: 0;
+}
+
+.cpa-new-file-input::placeholder {
+  color: var(--cpa-text-muted);
+  opacity: 0.7;
+}
+
+.cpa-new-file-confirm {
+  color: var(--cpa-primary) !important;
+  font-weight: 700 !important;
+  padding: 2px 5px !important;
+  border-radius: 3px !important;
+}
+
+.cpa-new-file-confirm:hover {
+  background: rgba(46, 160, 67, 0.2) !important;
+}
+
+.cpa-new-file-cancel {
+  color: var(--cpa-danger) !important;
+  font-weight: 700 !important;
+  padding: 2px 5px !important;
+  border-radius: 3px !important;
+}
+
+.cpa-new-file-cancel:hover {
+  background: rgba(218, 54, 51, 0.2) !important;
+}
+
+.cpa-new-file-hint {
+  font-size: 10.5px;
+  color: var(--cpa-danger);
+  font-family: var(--cpa-font-mono);
+  padding-left: 2px;
+}
+
+.cpa-file-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.cpa-tree-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  cursor: pointer;
+  color: var(--cpa-text);
+  transition: background 0.15s ease;
+  font-family: var(--cpa-font-mono);
+  font-size: 12px;
+}
+
+.cpa-tree-item:hover {
+  background: var(--cpa-surface-alt);
+}
+
+.cpa-tree-item.active {
+  background: rgba(88, 166, 255, 0.15);
+  color: var(--cpa-info);
+  font-weight: 600;
+}
+
+.cpa-tree-item-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cpa-tree-item-delete {
+  opacity: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cpa-text-muted);
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.cpa-tree-item:hover .cpa-tree-item-delete {
+  opacity: 1;
+}
+
+.cpa-tree-item-delete:hover {
+  color: var(--cpa-danger);
+  background: rgba(218, 54, 51, 0.15);
+}
+
+/* ========================================
+   MULTI-FILE EDITOR TAB BAR
+   ======================================== */
+.cpa-editor-tabs {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-bottom: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+  min-height: 100%;
+  height: 100%;
+}
+
+.cpa-editor-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.cpa-editor-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 100%;
+  padding: 0 12px;
+  font-size: 11.5px;
+  font-family: var(--cpa-font-mono);
+  color: var(--cpa-text-muted);
+  border-right: 1px solid var(--cpa-border);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.cpa-editor-tab:hover {
+  background: var(--cpa-surface);
+  color: var(--cpa-text);
+}
+
+.cpa-editor-tab.active {
+  background: var(--cpa-bg);
+  color: var(--cpa-info);
+  font-weight: 600;
+  border-bottom-color: var(--cpa-info);
+}
+
+.cpa-editor-tab-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 11px;
+  color: var(--cpa-text-muted);
+}
+
+.cpa-editor-tab-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+

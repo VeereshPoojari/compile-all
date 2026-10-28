@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>compile-all — Universal 100% Responsive Code Playground & IDE</title>
+  <!-- Load Scoped Styles -->
+  <link rel="stylesheet" href="./src/styles/compile-all.css">
+  <style>
+    /* 100% Edge-to-Edge Responsive IDE Setup */
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #0d1117;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    #compiler-app {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Remove outer border when running full-screen viewport */
+    #compiler-app .cpa-container {
+      border: none !important;
+      border-radius: 0 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 100% Width & Height Compiler Playground -->
+  <div id="compiler-app"></div>
+
+  <script type="module">
+    // Load directly from ES Modules (instant live updates, zero build lag)
+    import { CompileAll } from './src/index.js';
+    window.CompileAll = CompileAll;
+
+    const compiler = new CompileAll('#compiler-app', {
+      language: 'react', // Starts in React mode with live Web Preview immediately active
+      layout: 'split-h', // 'split-h' | 'split-v' | 'editor-only' | 'terminal-only'
+      theme: 'dark',
+      onRunStart: (data) => console.log('Run started:', data.language),
+      onRunEnd: (result) => console.log('Run ended:', result),
+      onStateChange: (state) => console.log('State changed:', state)
+    });
+
+    // Expose instance globally for browser console debugging
+    window.compilerInstance = compiler;
+  </script>
+</body>
+</html>
